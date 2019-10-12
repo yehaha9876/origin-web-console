@@ -628,6 +628,14 @@ angular
       $('body').addClass('ios');
     }
   })
+  .run(function($window, gettextCatalog){
+    gettextCatalog.debug = $window.GettextCatalogDebug;
+    var lang = $window.OPENSHIFT_LANG;
+    if (lang !== 'en') {
+      gettextCatalog.loadRemote('languages/' + lang + '.json');
+      gettextCatalog.setCurrentLanguage(lang);
+    }
+  })
   .run(function ($rootScope, APIService) {
     $rootScope.AEROGEAR_MOBILE_ENABLED = !!APIService.apiInfo({ resource: "mobileclients", group: "mobile.k8s.io" });
     if ($rootScope.AEROGEAR_MOBILE_ENABLED) {

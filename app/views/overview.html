@@ -6,29 +6,29 @@
       <!-- Getting started -->
       <div class="empty-state-message text-center">
         <div ng-if="project.metadata.name | canIAddToProject">
-          <h2>Get started with your project.</h2>
+          <h2 translate>Get started with your project.</h2>
           <p>
             Add content to your project from the catalog of web frameworks, databases, and other components. You may also deploy an existing image, create or replace resources from their YAML or JSON definitions, or select an item shared from another project.
           </p>
           <div class="empty-state-message-main-action">
-            <button class="btn btn-primary btn-lg" ng-click="browseCatalog()">
+            <button class="btn btn-primary btn-lg" ng-click="browseCatalog()" translate>
               Browse Catalog
             </button>
           </div>
           <div class="empty-state-message-secondary-action">
-            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('deployImage')">
+            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('deployImage')" translate>
               Deploy Image
             </button>
-            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromFile')">
+            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromFile')" translate>
               Import YAML / JSON
             </button>
-            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromProject')">
+            <button class="btn btn-default btn-sm" ng-click="showOrderingPanel('fromProject')" translate>
               Select from Project
             </button>
           </div>
         </div>
         <div ng-if="!(project.metadata.name | canIAddToProject)">
-          <h2>Welcome to project {{projectName}}.</h2>
+          <h2 translate>Welcome to project {{projectName}}.</h2>
           <ng-include src="'views/_request-access.html'"></ng-include>
         </div>
       </div>

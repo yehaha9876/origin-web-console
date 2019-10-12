@@ -36,6 +36,14 @@
     inactivityTimeoutMinutes: 0
   };
 
+  window.GettextCatalogDebug = true
+  // TODO: Internationalization is currently under development,the default supported language is English
+  window.OPENSHIFT_LANG = "en";
+  if(window.navigator.language === 'zh-CN'){
+    window.OPENSHIFT_LANG = 'zh-CN'
+  }
+
+
   window.OPENSHIFT_VERSION = {
     console: "dev-mode"
   };
