@@ -21,7 +21,9 @@ angular.module('openshiftConsole')
                        NotificationsService,
                        ProjectsService,
                        SecretsService,
-                       keyValueEditorUtils) {
+                       keyValueEditorUtils,
+		       gettext,
+                       gettextCatalog) {
     $scope.projectName = $routeParams.project;
     $scope.buildConfigName = $routeParams.buildconfig;
     $scope.buildConfig = null;
@@ -53,7 +55,7 @@ angular.module('openshiftConsole')
     $scope.eventsVersion = APIService.getPreferredVersion('events');
     $scope.secretsVersion = APIService.getPreferredVersion('secrets');
 
-    $scope.emptyMessage = "Loading...";
+    $scope.emptyMessage = gettextCatalog.getString(gettext("Loading..."));
 
     $scope.aceLoaded = function(editor) {
       var session = editor.getSession();
@@ -243,7 +245,7 @@ angular.module('openshiftConsole')
         }
 
       watches.push(DataService.watch($scope.buildsVersion, context, function(builds, action, build) {
-        $scope.emptyMessage = "No builds to show";
+        $scope.emptyMessage = gettext("No builds to show");
         if (!action) {
           $scope.unfilteredBuilds = BuildsService.validatedBuildsForBuildConfig($routeParams.buildconfig, builds.by('metadata.name'));
         } else {

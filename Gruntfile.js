@@ -103,7 +103,7 @@ module.exports = function (grunt) {
         protocol: grunt.option('scheme') || 'https',
         port: grunt.option('port') || 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: grunt.option('hostname') || 'localhost',
+        hostname: grunt.option('hostname') || '0.0.0.0',
         key: grunt.file.read('tls/tls.key'),
         cert: grunt.file.read('tls/tls.crt'),
         livereload: grunt.option('disable-live-reload') ? false : 35729
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
             var rewriteRules = [
               '^/$ /' + contextRoot + '/ [R=302]',
               '^/' + contextRoot + '(.*)$ $1',
-              '!^/(config.js|(bower_components|scripts|images|styles|views|components)(/.*)?)$ /index.html [L]'
+              '!^/(config.js|(bower_components|scripts|images|styles|views|components|languages)(/.*)?)$ /index.html [L]'
             ];
 
             // If config.local.js exists, use that instead of config.js.
@@ -190,6 +190,10 @@ module.exports = function (grunt) {
               connect().use(
                 '/bower_components',
                 serveStatic('./bower_components')
+              ),
+              connect().use(
+                '/languages',
+                serveStatic('./languages')
               ),
               serveStatic(appConfig.app)
             ];

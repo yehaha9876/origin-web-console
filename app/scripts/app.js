@@ -33,7 +33,8 @@ angular
     'ab-base64',
     'openshiftCommonServices',
     'openshiftCommonUI',
-    'webCatalog'
+    'webCatalog',
+    'gettext'
   ])
   .config(function ($routeProvider, $uibModalProvider, HomePagePreferenceServiceProvider) {
     var landingPageRoute;
